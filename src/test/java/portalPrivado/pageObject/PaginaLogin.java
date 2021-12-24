@@ -54,7 +54,7 @@ public class PaginaLogin extends PageObject {
 
         client.isVerbose = true;
 
-        if (captchaContainer.isClickable()){
+       if (captchaContainer.isClickable()){
             try {
                 try {
                     System.out.println("Your balance is " + client.getBalance() + " US cents");
