@@ -6,13 +6,7 @@ import com.DeathByCaptcha.HttpClient;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
-import net.serenitybdd.core.pages.WebElementFacade;
-import com.DeathByCaptcha.Client;
-import com.DeathByCaptcha.HttpClient;
-import com.DeathByCaptcha.Captcha;
-import java.io.IOException;
+
 
 import java.io.IOException;
 
@@ -54,7 +48,7 @@ public class PaginaLogin extends PageObject {
 
         client.isVerbose = true;
 
-       if (captchaContainer.isClickable()){
+       //if (captchaContainer.isVisible()){
             try {
                 try {
                     System.out.println("Your balance is " + client.getBalance() + " US cents");
@@ -67,7 +61,7 @@ public class PaginaLogin extends PageObject {
                     // Upload a reCAPTCHA and poll for its status with 120 seconds timeout.
                     // Put your proxy, proxy type, page googlekey, page url and solving timeout (in seconds)
                     // 0 or nothing for the default timeout value.
-                    captcha = client.decode("http://user:password@127.0.0.1:1234","http","x226Lc0i-oZAAAAAOmsutljPEIJKWfZB1ZyI8IlWd6K","https://www.google.com/recaptcha/api2/", 30);
+                    captcha = client.decode("","","6Lc0i-oZAAAAAOmsutljPEIJKWfZB1ZyI8IlWd6K","https://www.google.com/recaptcha/api2/", 30);
                 } catch (IOException e) {
                     System.out.println("Failed uploading CAPTCHA");
                 } catch (InterruptedException e) {
@@ -75,6 +69,19 @@ public class PaginaLogin extends PageObject {
                 }
                 if (null != captcha) {
                     System.out.println("CAPTCHA " + captcha.id + " solved: " + captcha.text);
+
+                    evaluateJavascript("document.getElementById('g-recaptcha-response').innerHTML = '" + captcha.text + "';");
+                        try{
+                            Thread.sleep(5000);
+                        }catch (Exception e){}
+                    evaluateJavascript("document.getElementById('recaptcha-verify-button').click();");
+                        System.out.println("ejecutando script con captcha: " + captcha.text);
+                        try{
+                            Thread.sleep(50000);
+                        }catch (Exception e){}
+
+
+
 
                     // Report incorrectly solved CAPTCHA if necessary.
                     // Make sure you've checked if the CAPTCHA was in fact incorrectly
@@ -94,6 +101,6 @@ public class PaginaLogin extends PageObject {
             } catch (com.DeathByCaptcha.Exception e) {
                 System.out.println(e);
             }
-        }
+        //}
     }
 }
