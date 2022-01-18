@@ -1,7 +1,7 @@
 # language: es
-Característica: Validación de Login en portal privado
+Característica: Validación de DAP en portal privado
 
-   necesitamos validar variantes de pruebas en Login
+   necesitamos validar variantes de pruebas en toma de DAP
 
   @Regresion
   Escenario: Validar Login en portal Privado

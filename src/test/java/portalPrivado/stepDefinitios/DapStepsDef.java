@@ -51,5 +51,15 @@ public class DapStepsDef {
         actorDap.validaComprobante();
     }
 
+    @Entonces("^(.*) deberia ver menu de DAP$")
+    public void validar_menu_de_DAP(String nombreUsuario){
+        actorDap.isCalled(nombreUsuario);
+        actorDap.validaHomeDAP();
+    }
 
+    @Y("^(.*) presiona el boton volver$")
+    public void volver_desde_paso_uno(String nombreUsuario){
+        actorDap.isCalled(nombreUsuario);
+        actorDap.volverDesdePaginaUno();
+    }
 }

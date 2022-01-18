@@ -25,14 +25,12 @@ public class Dap extends ScenarioActor {
     }
 
     @Step("#actor simula un DAP")
-    @Screenshots(afterEachStep = true)
     public void simulaDap(String monto, String plazo) {
         paginaDAP.simulaDap(monto, plazo);
         paginaDAP.clickEnSimular();
     }
 
     @Step("#actor confirma resultado y continua paso dos")
-    @Screenshots(afterEachStep = true)
     public void continuarAPasoTres() {
         try{
             Thread.sleep(5000);
@@ -41,7 +39,6 @@ public class Dap extends ScenarioActor {
     }
 
     @Step("#actor valida simulador e invierte")
-    @Screenshots(afterEachStep = true)
     public void validaSimuladorEInvierte() {
         try{
             Thread.sleep(5000);
@@ -50,20 +47,27 @@ public class Dap extends ScenarioActor {
     }
 
     @Step("#actor confirma toma de DAP ingresando clave")
-    @Screenshots(afterEachStep = true)
     public void confirmaTomaDeDap(String pass) {
         paginaDAP.confirmaTomaDeDap(pass);
     }
 
     @Step("#actor valida si existe un DAP ya tomado")
-    @Screenshots(afterEachStep = true)
     public void validaSiExisteDap() {
         paginaDAP.validaSiExisteDap();
     }
 
     @Step("#actor valida que se haya tomado el DAP")
-    @Screenshots(afterEachStep = true)
     public void validaComprobante() {
         paginaDAP.validaComprobanteDap();
+    }
+
+    @Step("#actor valida que se haya tomado el DAP")
+    public void volverDesdePaginaUno() {
+        paginaDAP.volverDePasoUno();
+    }
+
+    public void validaHomeDAP() {
+        Boolean resultado = paginaDAP.validaHomeDAP();
+        assertThat(resultado, Matchers.equalTo(true));
     }
 }

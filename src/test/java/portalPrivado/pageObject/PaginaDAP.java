@@ -10,6 +10,9 @@ public class PaginaDAP extends PageObject {
     @FindBy(xpath = "//h2[contains(text(),'Simulador Depósito a Plazo')]")
     WebElementFacade vistaSimulador;
 
+    @FindBy(xpath = "//h2[contains(text(),'Depósito a Plazo')]")
+    WebElementFacade vistaMenuDap;
+
     @FindBy(xpath = "//button[@id='simulacion-next-action']")
     WebElementFacade simular;
 
@@ -40,11 +43,27 @@ public class PaginaDAP extends PageObject {
     @FindBy(xpath = "//button[contains(text(),'Confirmar')]")
     WebElementFacade btnConfirmar;
 
-    @FindBy(xpath = "//span[contains(text(),'Simular')]")
+    @FindBy(xpath = "//button[@id='btn-dap']")
     WebElementFacade btnSimular;
 
     @FindBy(xpath = "//div[contains(text(),'¡Felicidades! Tu contratación de Depósito a Plazo ')]")
     WebElement mensajeConfirmacion;
+
+    @FindBy(xpath = "//button[@id='simulacion-prev-action']")
+    WebElement btnVolverPasoUno;
+
+    @FindBy(xpath = "//body/div[@id='root']/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[3]/div[1]/div[3]/div[1]/div[1]/button[1]")
+    WebElement btnVolverPasoDos;
+
+    @FindBy(xpath = "//body/div[@id='root']/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[4]/div[1]/div[1]/button[1]")
+    WebElement btnVolverPasoTres;
+
+    @FindBy(xpath = "//body/div[@id='root']/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div[3]/div[2]/div[4]/div[1]/div[1]/button[1]")
+    WebElement btnVolverPasoCuatro;
+
+
+
+
 
 
     public Boolean estamosEnVistaDap() {
@@ -88,5 +107,25 @@ public class PaginaDAP extends PageObject {
 
     public void validaComprobanteDap() {
         mensajeConfirmacion.isDisplayed();
+    }
+
+    public void volverDePasoCuatro(){
+        btnVolverPasoCuatro.click();
+    }
+
+    public void volverDePasoTres(){
+        btnVolverPasoTres.click();
+    }
+
+    public void volverDePasoDos(){
+        btnVolverPasoDos.click();
+    }
+
+    public void volverDePasoUno(){
+        btnVolverPasoDos.click();
+    }
+
+    public Boolean validaHomeDAP() {
+        return vistaMenuDap.isDisplayed();
     }
 }

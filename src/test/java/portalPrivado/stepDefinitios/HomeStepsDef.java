@@ -12,7 +12,6 @@ import portalPrivado.steps.Home;
 public class HomeStepsDef {
     @Steps(shared = true)
     Home actorHome;
-    Dap actorDap;
 
     @Before
     public void setTheStage() {
@@ -30,5 +29,12 @@ public class HomeStepsDef {
         actorHome.isCalled(nombreUsuario);
         actorHome.deberiaVerBienvenida();
         actorHome.iraDap();
+    }
+
+    @Y("^(.*) ingresa al modulo TEF$")
+    public void ir_a_transfererir_fondos(String nombreUsuario){
+        actorHome.isCalled(nombreUsuario);
+        actorHome.deberiaVerBienvenida();
+        actorHome.iraTef();
     }
 }
